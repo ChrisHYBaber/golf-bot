@@ -1,11 +1,10 @@
+seen = set()
 import time
 import requests
+import os
 
-BOT_TOKEN = "8820247177:AAFvJosIyrQ5C_Vk03LzLnlQyDsdM0UG7JA"
-CHAT_ID = "5962811059"
-
-
-seen = set()
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHAT_ID = os.environ["CHAT_ID"]
 
 
 def send_telegram(message):
@@ -37,16 +36,15 @@ def score(name, buy, resale):
     return profit * multiplier
 
 
-listings = [
-    ("TaylorMade Stealth Driver", 210, 380),
-    ("Ping G430 Driver", 230, 420),
-    ("Callaway Paradym Driver", 180, 300),
-    ("Titleist TSR2 Driver", 300, 520),
-]
+def get_listings():
+    return []
+
 
 print("STARTING LIVE SCAN...\n")
 
 while True:
+
+    listings = get_listings()
 
     for item in listings:
 
